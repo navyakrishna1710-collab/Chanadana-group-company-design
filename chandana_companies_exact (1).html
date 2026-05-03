@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Chandana Groups</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;overflow-x:hidden;background:#fff;}
+
+/* ─── NAVBAR ─── */
+.topnav{background:#fff;border-bottom:2.5px solid #1b5eab;padding:7px 0;position:sticky;top:0;z-index:999;box-shadow:0 2px 12px rgba(0,0,0,.08);}
+.brand-single{font-size:1.18rem;font-weight:900;color:#1a3263;letter-spacing:.4px;}
+.brand-single span{font-weight:400;}
+.nav-link{color:#1a3263!important;font-weight:500;font-size:.875rem;padding:5px 11px!important;}
+.nav-link.active{border-bottom:2.5px solid #1a3263;padding-bottom:3px!important;}
+.btn-cnav{background:linear-gradient(135deg,#1460b8,#1e82e0);color:#fff!important;font-weight:600;font-size:.875rem;border-radius:7px;padding:8px 22px!important;box-shadow:0 2px 10px rgba(20,96,184,.3);}
+
+/* ─── HERO ─── */
+.hero-section{background:linear-gradient(108deg,#0b2252 0%,#1452a0 40%,#1e72c8 70%,#2a8fdc 100%);position:relative;overflow:hidden;}
+.hero-glow{position:absolute;top:-80px;right:80px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,.11) 0%,transparent 65%);pointer-events:none;z-index:1;}
+.hero-inner{position:relative;z-index:2;display:flex;align-items:stretch;min-height:380px;}
+.hero-text-col{flex:0 0 50%;max-width:50%;padding:58px 30px 58px 0;display:flex;align-items:center;}
+.hero-text-col .pad{padding-left:max(15px,calc((100vw - 1140px)/2 + 12px));}
+.hero-text-col h1{font-size:1.9rem;font-weight:800;color:#fff;line-height:1.22;margin-bottom:12px;}
+.hero-text-col .tagline{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.96);line-height:1.55;margin-bottom:9px;}
+.hero-text-col .body-txt{font-size:.77rem;color:rgba(255,255,255,.78);line-height:1.78;margin-bottom:28px;max-width:380px;}
+.btn-explore{background:linear-gradient(135deg,#d44e00,#ef6820);color:#fff;font-weight:700;font-size:.83rem;border:none;border-radius:6px;padding:11px 24px;text-decoration:none;display:inline-block;box-shadow:0 4px 14px rgba(212,78,0,.42);}
+.btn-explore:hover{background:linear-gradient(135deg,#b34000,#d44e00);color:#fff;}
+.btn-contact-hero{background:transparent;border:2px solid rgba(255,255,255,.70);color:#fff;font-weight:600;font-size:.83rem;border-radius:6px;padding:10px 22px;text-decoration:none;display:inline-block;}
+.btn-contact-hero:hover{background:rgba(255,255,255,.12);color:#fff;}
+.hero-img-col{flex:0 0 50%;max-width:50%;position:relative;overflow:hidden;}
+.hero-img-col img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;}
+.hero-img-col::before{content:'';position:absolute;top:0;left:0;width:120px;height:100%;background:linear-gradient(to right,#1452a0 0%,transparent 100%);z-index:2;}
+
+/* ─── ABOUT ─── */
+.about-sec{background:#fff;padding:50px 0 42px;scroll-margin-top:80px;}
+.sec-ttl{font-size:1.45rem;font-weight:700;color:#1c2f5e;text-align:center;margin-bottom:7px;}
+.sec-ttl span{font-weight:900;}
+.sec-bar{width:52px;height:3px;background:#1460b8;border-radius:3px;margin:0 auto 16px;}
+.sec-sub{text-align:center;font-size:.84rem;color:#555;line-height:1.85;max-width:630px;margin:0 auto;}
+.divider-line{border:none;border-top:1px solid #dde4f0;margin:0 44px;}
+
+/* ═══════════════════════════════════════════════
+   OUR COMPANIES — EXACT FIGMA CARD DESIGN
+═══════════════════════════════════════════════ */
+.companies-sec{background:#fff;padding:44px 0 60px;}
+
+/* card wrapper */
+.co-card{
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.11);
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  background:#fff;
+  transition:transform .22s, box-shadow .22s;
+}
+.co-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 32px rgba(0,0,0,.16);
+}
+
+/* ── HEADER ── */
+.co-hd{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 15px;
+  min-height:74px;
+  position:relative;
+  overflow:hidden;
+}
+/* exact header colours from Figma */
+.hd-1{background:linear-gradient(135deg,#0d2c60 0%,#1a4fa0 100%);}
+.hd-2{background:linear-gradient(135deg,#c04800 0%,#e85e0a 100%);}
+.hd-3{background:linear-gradient(135deg,#0f46a8 0%,#1c70c8 100%);}
+.hd-4{background:linear-gradient(135deg,#9c0f0f 0%,#c42828 100%);}
+
+/* subtle circle glow top-right of header */
+.co-hd::after{
+  content:'';
+  position:absolute;
+  top:-30px;right:-30px;
+  width:100px;height:100px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.10);
+  pointer-events:none;
+}
+
+/* icon inside header */
+.co-hd-icon{
+  width:46px;height:46px;
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.co-hd-icon svg{width:46px;height:46px;}
+
+/* header text */
+.co-hd-text{
+  color:#fff;
+  line-height:1.28;
+}
+.co-hd-text .line1{font-size:.88rem;font-weight:400;display:block;}
+.co-hd-text .line2{font-size:.98rem;font-weight:800;display:block;}
+
+/* ── BODY ── */
+.co-body{
+  flex:1;
+  background:#fff;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height:180px;
+}
+
+/* description text */
+.co-desc{
+  font-size:.82rem;
+  font-weight:500;
+  color:#3a3a3a;
+  line-height:1.6;
+  padding:14px 15px 0 15px;
+  position:relative;
+  z-index:2;
+  flex:1;
+}
+
+/* ── WAVE BOTTOM AREA — fills entire bottom half of card ── */
+.co-wave-bottom{
+  position:relative;
+  height:140px;
+  overflow:hidden;
+  flex-shrink:0;
+  margin-top:-30px; /* overlap slightly into text area for full-half look */
+}
+
+/* SVG fills the whole wave-bottom area */
+.co-wave-bottom svg{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  display:block;
+}
+
+/* ── LEARN MORE BUTTON — sits at bottom of wave ── */
+.co-btn-row{
+  position:absolute;
+  bottom:14px; left:14px; right:14px;
+  z-index:3;
+}
+.btn-learn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  padding:10px 16px;
+  font-size:.83rem;
+  font-weight:700;
+  letter-spacing:.15px;
+  border:none;
+  border-radius:7px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:filter .2s, transform .15s;
+}
+.btn-learn:hover{filter:brightness(1.1);transform:translateY(-1px);}
+.btn-learn .arr{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.25);
+  font-size:.72rem;
+}
+/* navy button (cards 1 & 3) */
+.btn-navy{background:linear-gradient(135deg,#0d2c60,#1a4fa0);color:#fff;}
+/* orange button (cards 2 & 4) */
+.btn-orange{background:linear-gradient(135deg,#c04800,#e85e0a);color:#fff;}
+
+/* ─── SERVICES ─── */
+.services-sec{background:#fff;padding:44px 0 54px;}
+.svc-tile{text-align:center;padding:10px 6px;}
+.svc-ico-wrap{width:80px;height:80px;border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;position:relative;overflow:hidden;}
+.svc-ico-wrap.sb{background:linear-gradient(145deg,#1a60c4,#2e8fea);box-shadow:0 4px 16px rgba(26,96,196,.28);}
+.svc-ico-wrap.so{background:linear-gradient(145deg,#d44e00,#f07020);box-shadow:0 4px 16px rgba(212,78,0,.28);}
+.svc-ico-wrap svg{width:42px;height:42px;}
+.svc-lbl{font-size:.84rem;font-weight:600;color:#1c2f5e;line-height:1.4;}
+
+/* ─── WHY CHOOSE ─── */
+.why-sec{background:linear-gradient(180deg,#e6f2fb 0%,#d8eaf7 100%);padding:50px 0 0;}
+.chk-item{display:flex;align-items:center;gap:13px;margin-bottom:22px;}
+.chk-dot{width:37px;height:37px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#1048a4,#1e70c6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem;box-shadow:0 3px 10px rgba(16,72,164,.28);}
+.chk-txt{font-size:.93rem;font-weight:600;color:#1c2f5e;}
+.form-card{background:#fff;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,.10);padding:26px 24px 28px;}
+.f-input{display:block;width:100%;border:1px solid #cdd6e8;border-radius:7px;font-family:'Poppins',sans-serif;font-size:.84rem;color:#333;padding:10px 13px;margin-bottom:12px;outline:none;transition:border .18s;background:#fff;}
+.f-input:focus{border-color:#1460b8;}
+.f-input::placeholder{color:#b5bfcc;}
+.btn-send{background:linear-gradient(135deg,#c74c00,#ea6010);color:#fff;font-weight:700;font-size:.9rem;border:none;border-radius:8px;padding:12px;width:100%;box-shadow:0 4px 14px rgba(199,76,0,.36);cursor:pointer;}
+
+/* ─── GET IN TOUCH ─── */
+.git-sec{background:linear-gradient(160deg,#0a1d4a 0%,#103c96 50%,#1a6ac4 100%);padding:40px 0 50px;position:relative;overflow:hidden;}
+.git-content{position:relative;z-index:2;}
+.git-title{font-size:1.15rem;font-weight:700;color:#fff;border-bottom:1.5px solid rgba(255,255,255,.22);padding-bottom:10px;margin-bottom:18px;}
+.git-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.88);font-size:.86rem;margin-bottom:13px;}
+.git-item i{color:#ffd54f;font-size:1rem;flex-shrink:0;}
+
+/* ─── FOOTER ─── */
+.footer-bar{background:#081538;padding:13px 0 10px;}
+.f-lnk a{color:rgba(255,255,255,.70);text-decoration:none;font-size:.79rem;padding:0 10px;border-right:1px solid rgba(255,255,255,.18);}
+.f-lnk a:last-child{border-right:none;}
+.f-lnk a:hover{color:#fff;}
+.soc{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.11);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:.77rem;text-decoration:none;margin:0 2px;transition:all .2s;}
+.soc:hover{background:#ea6010;}
+.f-copy{color:rgba(255,255,255,.38);font-size:.74rem;text-align:center;margin-top:7px;}
+
+@media(max-width:767px){
+    .hero-inner{flex-direction:column;}
+    .hero-text-col,.hero-img-col{flex:0 0 100%;max-width:100%;}
+    .hero-img-col{height:220px;}
+    .hero-text-col{padding:36px 15px 60px;}
+    .hero-text-col h1{font-size:1.5rem;}
+}
+
+/* Footer text-white-50 class */
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Make images uniform size */
+#clients .img-fluid {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+#clients {
+    margin-bottom: 96px; /* 1 inch gap */
+}
+.co-hd-icon img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+  /* Dropdown on hover */
+  @media (min-width: 992px) {
+    .nav-item.dropdown:hover .dropdown-menu {
+      display: block;
+      margin-top: 0;
+    }
+  }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="topnav navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="file:///C:/Users/HP/Desktop/chandana%20website/photos/chandana%20logo.svg" alt="Chandana Logo" style="height: 40px; width: auto; border-radius: 50%; margin-right: 12px;">
+      <span class="brand-single">CHANDANA <span>GROUPS</span></span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMain">
+      <ul class="navbar-nav align-items-center gap-1">
+        <li><a class="nav-link active" href="#">Home</a></li>
+<li><a class="nav-link" href="#about">About Us</a></li>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Our Companies
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <li><a class="dropdown-item" href="#companies">Chandana IT Solutions</a></li>
+    <li><a class="dropdown-item" href="#companies">JobNest Hub Solution</a></li>
+    <li><a class="dropdown-item" href="#companies">Chandana Tech Careers</a></li>
+    <li><a class="dropdown-item" href="#companies">Sri Sharada Nikethana</a></li>
+  </ul>
+</li>
+
+        <li><a class="nav-link" href="#">Careers</a></li>
+        <li class="ms-2"><a class="nav-link btn-cnav" href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero-section">
+  <div class="hero-glow"></div>
+  <div class="container-fluid px-0">
+    <div class="hero-inner">
+      <div class="hero-text-col">
+        <div class="pad">
+          <h1>Welcome to Chandana Groups</h1>
+          <p class="tagline">Empowering Careers, Technology, and Opportunities Through Innovation and Excellence.</p>
+          <p class="body-txt">Chandana Groups is a service organization focused on technology services, recruitment, career development, and educational initiatives to help individuals and businesses succeed.</p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="#companies" class="btn-explore">Explore Our Companies</a>
+            <a href="#contact" class="btn-contact-hero">Contact Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-img-col">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=85" alt="Team"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about-sec" id="about">
+  <div class="container">
+    <h2 class="sec-ttl">About <span>Chandana Groups</span></h2>
+    <div class="sec-bar"></div>
+    <p class="sec-sub">Chandana Groups is a multi-service organization focused on technology services, recruitment, career development, and educational initiatives to help individuals and businesses succeed.</p>
+  </div>
+</section>
+<hr class="divider-line"/>
+
+<!-- ══════════════════════════════════════════════
+     OUR COMPANIES — EXACT FIGMA REPLICA
+══════════════════════════════════════════════ -->
+<section class="companies-sec" id="companies">
+  <div class="container">
+    <h2 class="sec-ttl">Our <span>Companies</span></h2>
+    <div class="sec-bar"></div>
+
+    <div class="row g-4 mt-2">
+
+      <!-- ╔══════════════════════════╗
+           ║  CARD 1 — NAVY BLUE     ║
+           ║  Chandana IT Solutions  ║
+           ╚══════════════════════════╝ -->
+      <div class="col-lg-3 col-md-6">
+        <div class="co-card">
+          <!-- Header -->
+          <div class="co-hd hd-1">
+<div class="co-hd-icon">
+              <img src="chandana it solutions logo.jpeg" alt="IT Solutions Logo" style="height: 35px; width: auto; border-radius: 8px;">
+            </div>
+            <div class="co-hd-text">
+              <span class="line1">Chandana</span>
+              <span class="line2">IT Solutions</span>
+            </div>
+          </div>
+          <!-- Body -->
+          <div class="co-body">
+            <p class="co-desc">IT Services &amp; Software Development</p>
+            <div class="co-wave-bottom">
+              <svg viewBox="0 0 300 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Line 1: WAVE — dips down in middle then rises to right -->
+                <path d="M0,140 L0,55 C50,45 80,85 130,70 C180,55 240,20 300,10 L300,140 Z"
+                      fill="rgba(13,44,96,0.07)"/>
+                <!-- Line 2: inside line1, same wave slightly lower -->
+                <path d="M0,140 L0,75 C50,65 80,100 130,88 C180,75 240,42 300,30 L300,140 Z"
+                      fill="rgba(13,44,96,0.12)"/>
+                <!-- Line 3: dark small curve bottom-right corner only -->
+                <path d="M200,140 C235,136 272,120 300,102 L300,140 Z"
+                      fill="rgba(13,44,96,0.30)"/>
+              </svg>
+              <div class="co-btn-row">
+                <a href="#" class="btn-learn btn-navy">Learn More <span class="arr"><i class="bi bi-chevron-right"></i></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ╔══════════════════════════╗
+           ║  CARD 2 — ORANGE        ║
+           ║  JobNest Hub Solution   ║
+           ╚══════════════════════════╝ -->
+      <div class="col-lg-3 col-md-6">
+        <div class="co-card">
+          <div class="co-hd hd-2">
+<div class="co-hd-icon">
+              <img src="job nest logo.jpeg" alt="JobNest Logo" style="height: 35px; width: auto; border-radius: 8px;">
+            </div>
+            <div class="co-hd-text">
+              <span class="line1">JobNest</span>
+              <span class="line2">Hub Solution</span>
+            </div>
+          </div>
+          <div class="co-body">
+            <p class="co-desc">Recruitment &amp; Staffing Services</p>
+            <div class="co-wave-bottom">
+              <svg viewBox="0 0 300 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,140 L0,55 C50,45 80,85 130,70 C180,55 240,20 300,10 L300,140 Z"
+                      fill="rgba(192,72,0,0.07)"/>
+                <path d="M0,140 L0,75 C50,65 80,100 130,88 C180,75 240,42 300,30 L300,140 Z"
+                      fill="rgba(192,72,0,0.13)"/>
+                <path d="M200,140 C235,136 272,120 300,102 L300,140 Z"
+                      fill="rgba(192,72,0,0.32)"/>
+              </svg>
+              <div class="co-btn-row">
+                <a href="#" class="btn-learn btn-orange">Learn More <span class="arr"><i class="bi bi-chevron-right"></i></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ╔══════════════════════════╗
+           ║  CARD 3 — BLUE          ║
+           ║  Chandana Tech Careers  ║
+           ╚══════════════════════════╝ -->
+      <div class="col-lg-3 col-md-6">
+        <div class="co-card">
+          <div class="co-hd hd-3">
+<div class="co-hd-icon">
+              <img src="chandana tech carrer logo.jpeg" alt="Tech Careers Logo" style="height: 35px; width: auto; border-radius: 8px;">
+            </div>
+            <div class="co-hd-text">
+              <span class="line1">Chandana</span>
+              <span class="line2">Tech Careers</span>
+            </div>
+          </div>
+          <div class="co-body">
+            <p class="co-desc">Career Guidance &amp; Internships</p>
+            <div class="co-wave-bottom">
+              <svg viewBox="0 0 300 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,140 L0,55 C50,45 80,85 130,70 C180,55 240,20 300,10 L300,140 Z"
+                      fill="rgba(15,70,168,0.07)"/>
+                <path d="M0,140 L0,75 C50,65 80,100 130,88 C180,75 240,42 300,30 L300,140 Z"
+                      fill="rgba(15,70,168,0.12)"/>
+                <path d="M200,140 C235,136 272,120 300,102 L300,140 Z"
+                      fill="rgba(15,70,168,0.30)"/>
+              </svg>
+              <div class="co-btn-row">
+                <a href="#" class="btn-learn btn-navy">Learn More <span class="arr"><i class="bi bi-chevron-right"></i></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ╔══════════════════════════╗
+           ║  CARD 4 — RED-ORANGE    ║
+           ║  Sri Sharada Nikethana  ║
+           ╚══════════════════════════╝ -->
+      <div class="col-lg-3 col-md-6">
+        <div class="co-card">
+          <div class="co-hd hd-4">
+<div class="co-hd-icon">
+              <img src="sri sharada logo.jpeg" alt="Sri Sharada Logo" style="height: 35px; width: auto; border-radius: 8px;">
+            </div>
+            <div class="co-hd-text">
+              <span class="line1">Sri Sharada</span>
+              <span class="line2">Nikethana</span>
+            </div>
+          </div>
+          <div class="co-body">
+            <p class="co-desc">Education &amp; Training Programs</p>
+            <div class="co-wave-bottom">
+              <svg viewBox="0 0 300 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,140 L0,55 C50,45 80,85 130,70 C180,55 240,20 300,10 L300,140 Z"
+                      fill="rgba(156,15,15,0.07)"/>
+                <path d="M0,140 L0,75 C50,65 80,100 130,88 C180,75 240,42 300,30 L300,140 Z"
+                      fill="rgba(156,15,15,0.13)"/>
+                <path d="M200,140 C235,136 272,120 300,102 L300,140 Z"
+                      fill="rgba(156,15,15,0.32)"/>
+              </svg>
+              <div class="co-btn-row">
+                <a href="#" class="btn-learn btn-orange">Learn More <span class="arr"><i class="bi bi-chevron-right"></i></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /row -->
+  </div>
+</section>
+
+<section class="clients-sec" id="clients">
+  <div class="container">
+    <h2 class="sec-ttl">Our <span>Clients</span></h2>
+    <div class="sec-bar"></div>
+    <div id="clientCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row g-4">
+            <div class="col-2"><img src="photos/Aptech1.webp" class="img-fluid" alt="Aptech"></div>
+            <div class="col-2"><img src="photos/Awign11.webp" class="img-fluid" alt="Awign"></div>
+            <div class="col-2"><img src="photos/CDAC7.webp" class="img-fluid" alt="CDAC"></div>
+            <div class="col-2"><img src="photos/Eduquity9.webp" class="img-fluid" alt="Eduquity"></div>
+            <div class="col-2"><img src="photos/Ginger6.webp" class="img-fluid" alt="Ginger"></div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row g-4">
+            <div class="col-2"><img src="photos/Innovatiview10.webp" class="img-fluid" alt="Innovatiview"></div>
+            <div class="col-2"><img src="photos/intent3.webp" class="img-fluid" alt="Intent"></div>
+            <div class="col-2"><img src="photos/Merittra13.webp" class="img-fluid" alt="Merittra"></div>
+            <div class="col-2"><img src="photos/NSE4.webp" class="img-fluid" alt="NSE"></div>
+            <div class="col-2"><img src="photos/Orlando5.webp" class="img-fluid" alt="Orlando"></div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row g-4">
+            <div class="col-2"><img src="photos/Sai-educare12.webp" class="img-fluid" alt="Sai Educare"></div>
+            <div class="col-2"><img src="photos/Satvat8.webp" class="img-fluid" alt="Satvat"></div>
+            <div class="col-2"><img src="photos/Sify2.webp" class="img-fluid" alt="Sify"></div>
+            <div class="col-2"><img src="photos/text-logo-lntedutech.webp" class="img-fluid" alt="LNT Edutech"></div>
+            <div class="col-2"><img src="photos/Vensysco14.webp" class="img-fluid" alt="Vensysco"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider-line"/>
+
+<!-- ── SERVICES ── -->
+
+
+<!-- WHY CHOOSE + FORM -->
+<section class="why-sec" id="contact">
+  <div class="container">
+    <h2 class="sec-ttl">Why Choose <span>Us?</span></h2>
+    <div class="sec-bar"></div>
+    <div class="row g-5 mt-1 pb-4">
+      <div class="col-md-5 pt-2">
+        <div class="chk-item"><div class="chk-dot"><i class="bi bi-check-lg"></i></div><span class="chk-txt">Industry Expertise</span></div>
+        <div class="chk-item"><div class="chk-dot"><i class="bi bi-check-lg"></i></div><span class="chk-txt">Strong Student &amp; Employer Network</span></div>
+        <div class="chk-item"><div class="chk-dot"><i class="bi bi-check-lg"></i></div><span class="chk-txt">Professional Training Programs</span></div>
+        <div class="chk-item"><div class="chk-dot"><i class="bi bi-check-lg"></i></div><span class="chk-txt">Career Opportunities for Youth</span></div>
+      </div>
+      <div class="col-md-7">
+        <div class="form-card">
+          <input class="f-input" type="text" placeholder="Your Name"/>
+          <input class="f-input" type="email" placeholder="Your Email"/>
+          <input class="f-input" type="tel" placeholder="Your Phone"/>
+          <textarea class="f-input" rows="4" placeholder="Your Message" style="resize:none;margin-bottom:16px;"></textarea>
+          <button class="btn-send">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Chatbot Toggle Button -->
+<button id="chatbot-toggle" onclick="toggleChatbot()" style="position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,#1460b8,#1e82e0);border:none;border-radius:50%;box-shadow:0 4px 16px rgba(20,96,184,.4);cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;transition:transform .2s;">
+  <i class="bi bi-chat-dots-fill" style="color:#fff;font-size:1.5rem;"></i>
+</button>
+
+<!-- Chatbot Widget -->
+<div id="chatbot-widget" style="position:fixed;bottom:90px;right:20px;width:320px;height:400px;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.15);display:none;z-index:1000;flex-direction:column;overflow:hidden;">
+  <div style="background:linear-gradient(135deg,#1460b8,#1e82e0);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <i class="bi bi-robot" style="font-size:1.3rem;"></i>
+      <span style="font-weight:600;font-size:.95rem;">Chandana Assistant</span>
+    </div>
+    <button onclick="toggleChatbot()" style="background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;opacity:.8;transition:opacity .2s;">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div id="chat-history" style="flex:1;overflow-y:auto;padding:16px;background:#f8f9fa;">
+    <div style="display:flex;gap:10px;margin-bottom:12px;">
+      <div style="width:32px;height:32px;background:linear-gradient(135deg,#1460b8,#1e82e0);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <i class="bi bi-robot" style="color:#fff;font-size:.85rem;"></i>
+      </div>
+      <div style="background:#fff;padding:10px 14px;border-radius:12px;border-top-left-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.08);max-width:80%;">
+        <p style="margin:0;font-size:.85rem;color:#333;line-height:1.5;">Hello! 👋 Welcome to Chandana Groups. How can I assist you today?</p>
+      </div>
+    </div>
+  </div>
+  <div style="padding:12px;border-top:1px solid #eee;background:#fff;display:flex;gap:8px;">
+    <input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)" style="flex:1;padding:10px 14px;border:1px solid #ddd;border-radius:20px;font-size:.85rem;outline:none;transition:border .2s;">
+    <button onclick="sendChatMessage()" style="width:40px;height:40px;background:linear-gradient(135deg,#1460b8,#1e82e0);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s;">
+      <i class="bi bi-send-fill" style="color:#fff;font-size:.9rem;"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+function toggleChatbot() {
+  const widget = document.getElementById('chatbot-widget');
+  const toggle = document.getElementById('chatbot-toggle');
+  if (widget.style.display === 'none' || widget.style.display === '') {
+    widget.style.display = 'flex';
+    toggle.style.display = 'none';
+  } else {
+    widget.style.display = 'none';
+    toggle.style.display = 'flex';
+  }
+}
+
+function sendChatMessage() {
+  const input = document.getElementById('chat-input');
+  const message = input.value.trim();
+  if (message === '') return;
+  
+  const chatHistory = document.getElementById('chat-history');
+  
+  // Add user message
+  const userMsg = document.createElement('div');
+  userMsg.style.cssText = 'display:flex;gap:10px;margin-bottom:12px;justify-content:flex-end;';
+  userMsg.innerHTML = `
+    <div style="background:linear-gradient(135deg,#1460b8,#1e82e0);color:#fff;padding:10px 14px;border-radius:12px;border-top-right-radius:4px;max-width:80%;">
+      <p style="margin:0;font-size:.85rem;line-height:1.5;">${message}</p>
+    </div>
+  `;
+  chatHistory.appendChild(userMsg);
+  
+  // Clear input
+  input.value = '';
+  
+  // Scroll to bottom
+  chatHistory.scrollTop = chatHistory.scrollHeight;
+  
+  // Simulate bot response
+  setTimeout(() => {
+    const botResponses = [
+      "Thank you for your message! Our team will get back to you soon.",
+      "I'd be happy to help you with information about our services.",
+      "You can reach us at +91 98765 43210 for immediate assistance.",
+      "Visit our companies section to learn more about what we offer.",
+      "Feel free to ask about IT Solutions, Recruitment, Tech Careers, or Education programs."
+    ];
+    const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+    
+    const botMsg = document.createElement('div');
+    botMsg.style.cssText = 'display:flex;gap:10px;margin-bottom:12px;';
+    botMsg.innerHTML = `
+      <div style="width:32px;height:32px;background:linear-gradient(135deg,#1460b8,#1e82e0);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <i class="bi bi-robot" style="color:#fff;font-size:.85rem;"></i>
+      </div>
+      <div style="background:#fff;padding:10px 14px;border-radius:12px;border-top-left-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.08);max-width:80%;">
+        <p style="margin:0;font-size:.85rem;color:#333;line-height:1.5;">${randomResponse}</p>
+      </div>
+    `;
+    chatHistory.appendChild(botMsg);
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+  }, 800);
+}
+
+  function handleChatKeyPress(event) {
+    if (event.key === 'Enter') {
+      sendChatMessage();
+    }
+  }
+</script>
+<!-- Footer -->
+<footer class="footer-bar">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h5 class="text-white mb-3">Chandana Groups</h5>
+        <p class="text-white-50 mb-0">
+          Empowering careers through technology services, recruitment, 
+          career development, and educational initiatives.
+        </p>
+      </div>
+      <div class="col-md-2">
+        <h5 class="text-white mb-3">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white-50 text-decoration-none">Home</a></li>
+          <li><a href="#about" class="text-white-50 text-decoration-none">About Us</a></li>
+          <li><a href="#companies" class="text-white-50 text-decoration-none">Our Companies</a></li>
+          <li><a href="#contact" class="text-white-50 text-decoration-none">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5 class="text-white mb-3">Our Companies</h5>
+        <ul class="list-unstyled">
+          <li><a href="#companies" class="text-white-50 text-decoration-none">Chandana IT Solutions</a></li>
+          <li><a href="#companies" class="text-white-50 text-decoration-none">JobNest Hub Solution</a></li>
+          <li><a href="#companies" class="text-white-50 text-decoration-none">Chandana Tech Careers</a></li>
+          <li><a href="#companies" class="text-white-50 text-decoration-none">Sri Sharada Nikethana</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-white mb-3">Newsletter</h5>
+        <p class="text-white-50 mb-3">Subscribe to get latest updates and offers</p>
+        <form class="d-flex">
+          <input type="email" class="form-control me-2" placeholder="Enter your email" style="border-radius: 4px; border: none; padding: 8px 12px;">
+          <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg,#1460b8,#1e82e0); border-radius: 4px; padding: 8px 16px;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <hr class="my-4" style="border-color: rgba(255,255,255,.1);">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+        <span class="f-lnk">
+          <a href="#" class="text-white-50">Privacy Policy</a>
+          <a href="#" class="text-white-50 mx-2">Terms &amp; Conditions</a>
+          <a href="#" class="text-white-50">Follow Us</a>
+        </span>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <a href="#" class="soc"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="soc"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="soc"><i class="bi bi-youtube"></i></a>
+        <a href="#" class="soc"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="soc"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+    <p class="f-copy mt-3">© 2020 Chandana Groups. All Rights Reserved.</p>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
